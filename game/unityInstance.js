@@ -1,5 +1,6 @@
 let UnityGame = null;
 
+// Most of this is boilerplate from the Unity documentation
 if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
     // Mobile device style: fill the whole browser client area with the game canvas:
     var meta = document.createElement('meta');
