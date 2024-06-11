@@ -1,10 +1,10 @@
 <linker>
   <assembly fullname="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-    <type fullname="DelayLayoutGroup" preserve="all" />
-    <type fullname="GameManager" preserve="all" />
-    <type fullname="InvokeConversationEvents" preserve="all" />
-    <type fullname="Location" preserve="all" />
-    <type fullname="SubtitleContentElement" preserve="all" />
+    <type fullname="Project.Runtime.Scripts.Events.Actions.InvokeConversationEvents" preserve="all" />
+    <type fullname="Project.Runtime.Scripts.Manager.GameManager" preserve="all" />
+    <type fullname="Project.Runtime.Scripts.ScriptableObjects.Location" preserve="all" />
+    <type fullname="Project.Runtime.Scripts.UI.SubtitleContentElement" preserve="all" />
+    <type fullname="Project.Runtime.Scripts.Utility.DelayLayoutGroup" preserve="all" />
   </assembly>
   <assembly fullname="Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="PixelCrushers.DialogueSystem.Wrappers.ConversationControl" preserve="all" />

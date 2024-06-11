@@ -27,6 +27,36 @@ function establishSession(url, opts, cb) {
     socket = io(url, defaultOpts);
     socket.on("connect", () => {
         console.log("Connected to server!");
+
+        console.log("Setting up event listeners...");
+        window.addEventListener("canYouHearMe", () => {
+            console.log("Yes, I can hear you!");
+        });
+
+        window.addEventListener("disconnect", () => {
+            socket.disconnect();
+        });
+
+        window.addEventListener("putSaveGame", (e) => {
+            socket.emit("saveGame", e.detail.slot, e.detail.data);
+        });
+
+        window.addEventListener("getOccupiedSaveSlots", () => {
+            socket.emit("getOccupiedSaveSlots", (response) => {
+                UnityGame.SendMessage("App", "getOccupiedSaveSlotsCallback", response.data); // grab only slot list
+            });
+        });
+
+        window.addEventListener("getSaveGame", (e) => {
+            socket.emit("getSaveGame", e.detail.slot, (response) => {
+                UnityGame.SendMessage("App", "getSaveGameCallback", response.data); // grab only save data
+            });
+        });
+
+        window.addEventListener("playerEvent", (e) => {
+            socket.emit("playerEvent", e.detail.data);
+        });
+
         cb();
     });
 
@@ -39,6 +69,10 @@ function establishSession(url, opts, cb) {
         console.error(error);
         cb({ error });
     });
+
+    socket.on("disconnect", () => {
+        console.log("Disconnected from server!");
+    });
 }
 
 function emitEvent(event, data, cb){
@@ -48,31 +82,3 @@ function emitEvent(event, data, cb){
 }
 
 
-// event listeners for Unity functions
-window.addEventListener("canYouHearMe", () => {
-    console.log("Yes, I can hear you!");
-});
-
-window.addEventListener("disconnect", () => {
-    socket.disconnect();
-});
-
-window.addEventListener("putSaveGame", (e) => {
-    socket.emit("saveGame", e.detail.slot, e.detail.data);
-});
-
-window.addEventListener("getOccupiedSaveSlots", () => {
-    socket.emit("getOccupiedSaveSlots", (response) => {
-        UnityGame.SendMessage("App", "getOccupiedSaveSlotsCallback", response.data); // grab only slot list
-    });
-});
-
-window.addEventListener("getSaveGame", (e) => {
-    socket.emit("getSaveGame", e.detail.slot, (response) => {
-        UnityGame.SendMessage("App", "getSaveGameCallback", response.data); // grab only save data
-    });
-});
-
-window.addEventListener("playerEvent", (e) => {
-    socket.emit("playerEvent", e.detail.data);
-});
