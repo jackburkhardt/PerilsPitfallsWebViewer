@@ -3,8 +3,26 @@ const urlParams = new URLSearchParams(window.location.search);
 let socket;
 let auth = {};
 
+var game_id = urlParams.get("i");
+var email = urlParams.get("e");
+var token = urlParams.get("tk");
+
+if (!game_id || !email || !token) {
+    console.error("Invalid session parameters!");
+} else {
+    auth = {e: email, i: game_id, tk: token};
+
+establishSession("wss://sc-perils-80117cab3167.herokuapp.com", 
+    { query: auth, }, 
+    
+    (error) => {
+        if (error) console.error({error});
+    }
+)
+}
+
 function establishSession(url, opts, cb) {
-    const defaultOpts = opts || { withCredentiasl: true };
+    const defaultOpts = opts || { withCredentials: true };
 
     socket = io(url, defaultOpts);
     socket.on("connect", () => {
@@ -23,21 +41,11 @@ function establishSession(url, opts, cb) {
     });
 }
 
-var game_id = urlParams.get("i");
-var email = urlParams.get("e");
-var token = urlParams.get("tk");
-
-if (!game_id || !email || !token) {
-    console.error("Invalid session parameters!");
-    return;
+function emitEvent(event, data, cb){
+    socket.emit(event, {auth: auth}, data, (response) => {
+        cb(response);
+    });
 }
-
-auth = { game_id: game_id, email: email, token: token };
-
-
-socket.emit("event", { game_id: game_id, email: email, token: token }, (response) => {
-    console.log(response);
-});
 
 
 // event listeners for Unity functions
@@ -53,15 +61,15 @@ window.addEventListener("putSaveGame", (e) => {
     socket.emit("saveGame", e.detail.slot, e.detail.data);
 });
 
-window.addEventListener("saveGameExists", (e) => {
-    socket.emit("saveGameExists", e.detail.slot, (response) => {
-        UnityGame.SendMessage("App", "saveGameExists", response);
+window.addEventListener("getOccupiedSaveSlots", () => {
+    socket.emit("getOccupiedSaveSlots", (response) => {
+        UnityGame.SendMessage("App", "getOccupiedSaveSlotsCallback", response.data); // grab only slot list
     });
 });
 
 window.addEventListener("getSaveGame", (e) => {
     socket.emit("getSaveGame", e.detail.slot, (response) => {
-        UnityGame.SendMessage("App", "getSaveGame", response);
+        UnityGame.SendMessage("App", "getSaveGameCallback", response.data); // grab only save data
     });
 });
 

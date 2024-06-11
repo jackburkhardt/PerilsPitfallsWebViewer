@@ -15,6 +15,7 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static('game', {
     setHeaders: function(res, path) {
+        // Browsers will complain if we don't set the correct Content-Encoding header
         if (path.endsWith(".data.gz") || path.endsWith(".framework.js.gz")) {
             res.set("Content-Encoding", "gzip");
         }
