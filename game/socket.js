@@ -7,7 +7,7 @@ var game_id = urlParams.get("i");
 var email = urlParams.get("e");
 var token = urlParams.get("tk");
 
-if (!game_id || !email || !token) {
+if (!game_id || !email || !token) {  //keep this
     console.error("Invalid session parameters!");
 } else {
     auth = {e: email, i: game_id, tk: token};
