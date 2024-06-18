@@ -17,9 +17,9 @@ if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
   }
 
   createUnityInstance(document.querySelector("#unity-canvas"), {
-    dataUrl: "Build/game.data",
-    frameworkUrl: "Build/game.framework.js",
-    codeUrl: "Build/game.wasm",
+    dataUrl: "Build/PerilsPitfallsWebViewer.data",
+    frameworkUrl: "Build/PerilsPitfallsWebViewer.framework.js",
+    codeUrl: "Build/PerilsPitfallsWebViewer.wasm",
     streamingAssetsUrl: "StreamingAssets",
     companyName: "SimCase",
     productName: "Perils and Pitfalls",

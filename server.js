@@ -13,7 +13,7 @@ const httpsPort = Number(process.env.HTTPS_SERVER_PORT || 8080);
 const app = express();
 app.use(express.json());
 app.use(cors());
-app.use(express.static('', {
+app.use(express.static('.', {
     setHeaders: function(res, path) {
         // Browsers will complain if we don't set the correct Content-Encoding header
         if (path.endsWith(".data.gz") || path.endsWith(".framework.js.gz")) {
