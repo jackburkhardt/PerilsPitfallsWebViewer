@@ -3,6 +3,8 @@ const urlParams = new URLSearchParams(window.location.search);
 let socket;
 let auth = {};
 
+var cached_save_game = null;
+
 var game_id = urlParams.get("i");
 var email = urlParams.get("e");
 var token = urlParams.get("tk");
@@ -37,19 +39,23 @@ function establishSession(url, opts, cb) {
             socket.disconnect();
         });
 
+        window.addEventListener("unityReadyForData", () => {
+            unitySaveDataCallback();
+        });
+
         window.addEventListener("putSaveGame", (e) => {
             socket.emit("saveGame", e.detail.slot, e.detail.data);
         });
 
         window.addEventListener("getOccupiedSaveSlots", () => {
             socket.emit("getOccupiedSaveSlots", (response) => {
-                UnityGame.SendMessage("App", "getOccupiedSaveSlotsCallback", response.data); // grab only slot list
+                cached_save_game = response.data;
             });
         });
 
         window.addEventListener("getSaveGame", (e) => {
             socket.emit("getSaveGame", e.detail.slot, (response) => {
-                UnityGame.SendMessage("App", "getSaveGameCallback", response.data); // grab only save data
+                cached_save_game = response.data;
             });
         });
 
@@ -81,4 +87,7 @@ function emitEvent(event, data, cb){
     });
 }
 
+function unitySaveDataCallback(){
+    UnityGame.SendMessage("App", "WebSaveGameCallback", cached_save_game);
+}
 
