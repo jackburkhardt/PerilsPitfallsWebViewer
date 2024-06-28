@@ -88,6 +88,6 @@ function emitEvent(event, data, cb){
 }
 
 function unitySaveDataCallback(){
-    UnityGame.SendMessage("App", "WebSaveGameCallback", cached_save_game);
+    UnityGame.SendMessage("SaveDataStorer", "WebSaveGameCallback", cached_save_game);
 }
 
