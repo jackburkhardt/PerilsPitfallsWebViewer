@@ -30,7 +30,6 @@ function establishSession(url, opts, cb) {
     socket.on("connect", () => {
         console.log("Connected to server!");
 
-        console.log("Setting up event listeners...");
         window.addEventListener("canYouHearMe", () => {
             console.log("Yes, I can hear you!");
         });
@@ -39,28 +38,22 @@ function establishSession(url, opts, cb) {
             socket.disconnect();
         });
 
-        window.addEventListener("unityReadyForData", () => {
-            unitySaveDataCallback();
-        });
+        emitEvent("enter", (resp) => {
+            console.log("got post-entry data: " + resp);
+            cached_save_game = resp;
 
-        window.addEventListener("putSaveGame", (e) => {
-            socket.emit("saveGame", e.detail.slot, e.detail.data);
-        });
-
-        window.addEventListener("getOccupiedSaveSlots", () => {
-            socket.emit("getOccupiedSaveSlots", (response) => {
-                cached_save_game = response.data;
+            console.log("Setting up event listeners...");
+            window.addEventListener("unityReadyForData", () => {
+                unitySaveDataCallback();
             });
-        });
-
-        window.addEventListener("getSaveGame", (e) => {
-            socket.emit("getSaveGame", e.detail.slot, (response) => {
-                cached_save_game = response.data;
+    
+            window.addEventListener("putSaveGame", (e) => {
+                socket.emit("putGameState", e.detail.slot, e.detail.data);
             });
-        });
-
-        window.addEventListener("playerEvent", (e) => {
-            socket.emit("playerEvent", e.detail.data);
+    
+            window.addEventListener("playerEvent", (e) => {
+                socket.emit("playerEvent", e.detail.data);
+            });
         });
 
         cb();
