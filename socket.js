@@ -38,23 +38,7 @@ function establishSession(url, opts, cb) {
             socket.disconnect();
         });
 
-        emitEvent("enter", (resp) => {
-            console.log("got post-entry data: " + resp);
-            cached_save_game = resp;
-
-            console.log("Setting up event listeners...");
-            window.addEventListener("unityReadyForData", () => {
-                unitySaveDataCallback();
-            });
-    
-            window.addEventListener("putSaveGame", (e) => {
-                socket.emit("putGameState", e.detail.slot, e.detail.data);
-            });
-    
-            window.addEventListener("playerEvent", (e) => {
-                socket.emit("playerEvent", e.detail.data);
-            });
-        });
+        enterGame();
 
         cb();
     });
@@ -74,13 +58,28 @@ function establishSession(url, opts, cb) {
     });
 }
 
-function emitEvent(event, data, cb){
-    socket.emit(event, {auth: auth}, data, (response) => {
-        cb(response);
+function enterGame(){
+    socket.emit("enter", {auth: auth}, (response) => {
+        var response_str = JSON.stringify(response);
+        console.log("got post-entry data: " + response_str);
+        cached_save_game = JSON.stringify(response.player.state)
+
+        console.log("Setting up event listeners...");
+        window.addEventListener("unityReadyForData", () => {
+            unitySaveDataCallback();
+        });
+
+        window.addEventListener("putSaveGame", (e) => {
+            socket.emit("putGameState", e.detail.slot, e.detail.data);
+        });
+
+        window.addEventListener("playerEvent", (e) => {
+            socket.emit("playerEvent", e.detail.data);
+        });
     });
 }
 
 function unitySaveDataCallback(){
-    UnityGame.SendMessage("SaveDataStorer", "WebSaveGameCallback", cached_save_game);
+    UnityGame.SendMessage("Save System", "WebSaveGameCallback", cached_save_game);
 }
 
