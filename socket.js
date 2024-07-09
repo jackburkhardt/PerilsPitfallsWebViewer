@@ -10,7 +10,7 @@ var email = urlParams.get("e");
 var token = urlParams.get("tk");
 
 if (!game_id || !email || !token) {  //keep this
-    console.error("Invalid session parameters!");
+    console.error("[Socket] Invalid session parameters! Client may not be authenticated.");
 } else {
     auth = {e: email, i: game_id, tk: token};
 
@@ -28,13 +28,14 @@ function establishSession(url, opts, cb) {
 
     socket = io(url, defaultOpts);
     socket.on("connect", () => {
-        console.log("Connected to server!");
+        console.log("[Socket] Connected!");
 
         window.addEventListener("canYouHearMe", () => {
-            console.log("Yes, I can hear you!");
+            console.log("[-> Unity] Yes, I can hear you!");
         });
 
         window.addEventListener("disconnect", () => {
+            console.log("[<- Unity] Socket disconnect requested.");
             socket.disconnect();
         });
 
@@ -54,23 +55,23 @@ function establishSession(url, opts, cb) {
     });
 
     socket.on("disconnect", () => {
-        console.log("Disconnected from server!");
+        console.log("[Socket] Disconnected!");
     });
 }
 
 function enterGame(){
     socket.emit("enter", {auth: auth}, (response) => {
         var response_str = JSON.stringify(response);
-        console.log("got post-entry data: " + response_str);
+        //console.log("got post-entry data: " + response_str);
         cached_save_game = JSON.stringify(response.player.state)
 
-        console.log("Setting up event listeners...");
+        console.log("[Socket] Setting up event listeners...");
         window.addEventListener("unityReadyForData", () => {
             unitySaveDataCallback();
         });
 
         window.addEventListener("putSaveGame", (e) => {
-            console.log("putSaveGame event received: " + JSON.stringify(e.detail.data));
+            console.log("[<- Unity] Attemting web save...")
             socket.emit("putGameState", e.detail.data, (response, error) => {
                 if (error) console.error(error);
             });

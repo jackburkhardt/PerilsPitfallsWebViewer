@@ -23,7 +23,6 @@ if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
     streamingAssetsUrl: "StreamingAssets",
     companyName: "SimCase",
     productName: "Perils and Pitfalls",
-    productVersion: "0.1.3a",
     matchWebGLToCanvasSize: true, // Uncomment this to separately control WebGL canvas render size and DOM element size.
     // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
   }).then((unityInstance) => {
