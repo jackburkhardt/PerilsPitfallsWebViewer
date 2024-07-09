@@ -70,11 +70,14 @@ function enterGame(){
         });
 
         window.addEventListener("putSaveGame", (e) => {
-            socket.emit("putGameState", e.detail.slot, e.detail.data);
+            console.log("putSaveGame event received: " + JSON.stringify(e.detail.data));
+            socket.emit("putGameState", e.detail.data, (response, error) => {
+                if (error) console.error(error);
+            });
         });
 
         window.addEventListener("playerEvent", (e) => {
-            socket.emit("playerEvent", e.detail.data);
+            //socket.emit("playerEvent", e.detail.data);
         });
     });
 }
