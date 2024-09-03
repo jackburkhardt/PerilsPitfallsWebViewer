@@ -4,6 +4,22 @@
 2. Open the repo's folder in a command window. Run `npm install`.
 3. Run `node server.js` to start the web server.
 
+## How to build
+
+Most of these steps you'll only ever have to do once, but this just makes sure you have the right settings. Once you know your settings are right, you can just Build in Unity and push to Github.
+
+1. Clone this repository and the KeyWave repository.
+2. Open the KeyWave Unity project.
+3. Go to the Build Settings and change the target platform to WebGL.
+3a. Set Code Optimization to Size and IL2CPP Code Gen to Faster (smaller) builds.
+4. Go to the Project settings, then select Player, then the HTML5 tab.
+4a. Ensure the selected WebGL template is "Perils&Pitfalls"
+4b. Disable "Strip Engine Code" and set Managed Stripping Level to Low.
+4c. Set Enable Exceptions to Explicitly Thrown only
+4d. Set Debug Symbols to Embedded and Compression to Disabled IF this is a development build. If it's a full deployment, disable symbols and use Gzip compression.
+5. Back in the Build Settings, click Build. Select the output folder to be the PerilsAndPitfallsWebView folder (this repository).
+6. Commit and push changes to Github. On Github you will see a green checkmark next to the commit once it is published. You can also verify this by opening the game page and seeing if the Build date updates to the current date. 
+
 ## Things of note
 The `game/` directory holds all client files. `Build/`, `StreamingAssets/`, and `index.html` are the output of the Unity build and may be overwritten.
 
