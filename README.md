@@ -10,12 +10,12 @@ Most of these steps you'll only ever have to do once, but this just makes sure y
 
 1. Clone this repository and the KeyWave repository.
 2. Open the KeyWave Unity project.
-3. Go to the Build Settings and change the target platform to WebGL.
+3. Go to the Build Settings and change the target platform to WebGL. \
 3a. Set Code Optimization to Size and IL2CPP Code Gen to Faster (smaller) builds.
-4. Go to the Project settings, then select Player, then the HTML5 tab.
-4a. Ensure the selected WebGL template is "Perils&Pitfalls"
-4b. Disable "Strip Engine Code" and set Managed Stripping Level to Low.
-4c. Set Enable Exceptions to Explicitly Thrown only
+4. Go to the Project settings, then select Player, then the HTML5 tab. \
+4a. Ensure the selected WebGL template is "Perils&Pitfalls" \
+4b. Disable "Strip Engine Code" and set Managed Stripping Level to Low. \
+4c. Set Enable Exceptions to Explicitly Thrown only \
 4d. Set Debug Symbols to Embedded and Compression to Disabled IF this is a development build. If it's a full deployment, disable symbols and use Gzip compression.
 5. Back in the Build Settings, click Build. Select the output folder to be the PerilsAndPitfallsWebView folder (this repository).
 6. Commit and push changes to Github. On Github you will see a green checkmark next to the commit once it is published. You can also verify this by opening the game page and seeing if the Build date updates to the current date. 
