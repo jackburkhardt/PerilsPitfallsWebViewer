@@ -75,6 +75,7 @@
     <type fullname="PixelCrushers.DialogueSystem.DisplaySettings/LocalizationSettings" preserve="nothing" serialized="true" />
     <type fullname="PixelCrushers.DialogueSystem.DisplaySettings/SubtitleSettings" preserve="nothing" serialized="true" />
     <type fullname="PixelCrushers.DialogueSystem.EmphasisSetting" preserve="nothing" serialized="true" />
+    <type fullname="PixelCrushers.DialogueSystem.EntryGroup" preserve="nothing" serialized="true" />
     <type fullname="PixelCrushers.DialogueSystem.Field" preserve="nothing" serialized="true" />
     <type fullname="PixelCrushers.DialogueSystem.InputTrigger" preserve="nothing" serialized="true" />
     <type fullname="PixelCrushers.DialogueSystem.Item" preserve="nothing" serialized="true" />
