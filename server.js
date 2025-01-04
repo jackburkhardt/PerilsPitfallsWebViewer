@@ -15,19 +15,14 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static('.', {
     setHeaders: function(res, path) {
-        // Browsers will complain if we don't set the correct Content-Encoding header
-        if (path.endsWith(".data.gz") || path.endsWith(".framework.js.gz")) {
-            res.set("Content-Encoding", "gzip");
-        }
-        if (path.endsWith(".wasm.gz")) {
+
+        if(path.includes(".wasm")){
             res.set("Content-Type", "application/wasm");
+        }
+
+        if (path.endsWith(".gz")) {
             res.set("Content-Encoding", "gzip");
-        }
-        if (path.endsWith(".data.br") || path.endsWith(".framework.js.br")) {
-            res.set("Content-Encoding", "br");
-        }
-        if (path.endsWith(".wasm.br")) {
-            res.set("Content-Type", "application/wasm");
+        } else if (path.endsWith(".br")) {
             res.set("Content-Encoding", "br");
         }
     }
