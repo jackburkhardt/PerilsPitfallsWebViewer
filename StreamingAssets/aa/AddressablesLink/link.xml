@@ -1,6 +1,8 @@
 <linker>
   <assembly fullname="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="AudioClipDatabase" preserve="all" />
+    <type fullname="AudioSettings" preserve="all" />
+    <type fullname="ClockSettings" preserve="all" />
     <type fullname="Project.Runtime.Assets.Tutorials.Tutorial" preserve="all" />
     <type fullname="Project.Runtime.Scripts.Events.Actions.CustomConversationFunctions" preserve="all" />
     <type fullname="Project.Runtime.Scripts.Manager.GameManager" preserve="all" />
@@ -8,8 +10,10 @@
     <type fullname="Project.Runtime.Scripts.SaveSystem.GameStateSaver" preserve="all" />
     <type fullname="Project.Runtime.Scripts.ScriptableObjects.Location" preserve="all" />
     <type fullname="Project.Runtime.Scripts.Utility.DelayLayoutGroup" preserve="all" />
+    <type fullname="Settings" preserve="all" />
     <type fullname="SetVerticesDirty" preserve="all" />
     <type fullname="SmartWatch" preserve="all" />
+    <type fullname="TrafficSettings" preserve="all" />
     <type fullname="TriggerResetter" preserve="all" />
     <type fullname="AudioClipDatabase/AudioData" preserve="nothing" serialized="true" />
     <type fullname="AudioClipDatabase/AudioData/AudioDataVariant" preserve="nothing" serialized="true" />
@@ -22,6 +26,7 @@
     <type fullname="PixelCrushers.DialogueSystem.PlaySequenceClip" preserve="all" />
     <type fullname="PixelCrushers.DialogueSystem.PlaySequenceTrack" preserve="all" />
     <type fullname="PixelCrushers.DialogueSystem.Wrappers.ConversationControl" preserve="all" />
+    <type fullname="PixelCrushers.DialogueSystem.Wrappers.DialogueDatabase" preserve="all" />
     <type fullname="PixelCrushers.DialogueSystem.Wrappers.DialogueSystemController" preserve="all" />
     <type fullname="PixelCrushers.DialogueSystem.Wrappers.DialogueSystemEvents" preserve="all" />
     <type fullname="PixelCrushers.DialogueSystem.Wrappers.DialogueSystemSceneEvents" preserve="all" />
@@ -51,10 +56,22 @@
     <type fullname="PixelCrushers.Wrappers.UIPanel" preserve="all" />
     <type fullname="PixelCrushers.Wrappers.UIScrollbarEnabler" preserve="all" />
     <type fullname="Plugins.Pixel_Crushers.Dialogue_System.Scripts.Utility.StringList" preserve="all" />
+    <type fullname="PixelCrushers.DialogueSystem.Actor" preserve="nothing" serialized="true" />
     <type fullname="PixelCrushers.DialogueSystem.ContinueConversationBehaviour" preserve="nothing" serialized="true" />
-    <type fullname="PixelCrushers.DialogueSystem.PlaySequenceBehaviour" preserve="nothing" serialized="true" />
-    <type fullname="PixelCrushers.DialogueSystem.Condition" preserve="nothing" serialized="true" />
+    <type fullname="PixelCrushers.DialogueSystem.Conversation" preserve="nothing" serialized="true" />
     <type fullname="PixelCrushers.DialogueSystem.ConversationOverrideDisplaySettings" preserve="nothing" serialized="true" />
+    <type fullname="PixelCrushers.DialogueSystem.DialogueDatabase/SyncInfo" preserve="nothing" serialized="true" />
+    <type fullname="PixelCrushers.DialogueSystem.DialogueEntry" preserve="nothing" serialized="true" />
+    <type fullname="PixelCrushers.DialogueSystem.EmphasisSetting" preserve="nothing" serialized="true" />
+    <type fullname="PixelCrushers.DialogueSystem.EntryGroup" preserve="nothing" serialized="true" />
+    <type fullname="PixelCrushers.DialogueSystem.Field" preserve="nothing" serialized="true" />
+    <type fullname="PixelCrushers.DialogueSystem.InputTrigger" preserve="nothing" serialized="true" />
+    <type fullname="PixelCrushers.DialogueSystem.Item" preserve="nothing" serialized="true" />
+    <type fullname="PixelCrushers.DialogueSystem.Link" preserve="nothing" serialized="true" />
+    <type fullname="PixelCrushers.DialogueSystem.Location" preserve="nothing" serialized="true" />
+    <type fullname="PixelCrushers.DialogueSystem.PlaySequenceBehaviour" preserve="nothing" serialized="true" />
+    <type fullname="PixelCrushers.DialogueSystem.Variable" preserve="nothing" serialized="true" />
+    <type fullname="PixelCrushers.DialogueSystem.Condition" preserve="nothing" serialized="true" />
     <type fullname="PixelCrushers.DialogueSystem.DialogueEntrySceneEvent" preserve="nothing" serialized="true" />
     <type fullname="PixelCrushers.DialogueSystem.DialogueSystemEvents/BarkEvents" preserve="nothing" serialized="true" />
     <type fullname="PixelCrushers.DialogueSystem.DialogueSystemEvents/ConversationEvents" preserve="nothing" serialized="true" />
@@ -72,7 +89,6 @@
     <type fullname="PixelCrushers.DialogueSystem.DisplaySettings/InputSettings" preserve="nothing" serialized="true" />
     <type fullname="PixelCrushers.DialogueSystem.DisplaySettings/LocalizationSettings" preserve="nothing" serialized="true" />
     <type fullname="PixelCrushers.DialogueSystem.DisplaySettings/SubtitleSettings" preserve="nothing" serialized="true" />
-    <type fullname="PixelCrushers.DialogueSystem.InputTrigger" preserve="nothing" serialized="true" />
     <type fullname="PixelCrushers.DialogueSystem.PersistentDataSettings" preserve="nothing" serialized="true" />
     <type fullname="PixelCrushers.DialogueSystem.StandardUIAlertControls" preserve="nothing" serialized="true" />
     <type fullname="PixelCrushers.DialogueSystem.StandardUIDialogueControls" preserve="nothing" serialized="true" />
@@ -166,11 +182,11 @@
     <type fullname="UnityEngine.Sprite" preserve="all" />
     <type fullname="UnityEngine.Texture2D" preserve="all" />
     <type fullname="UnityEngine.Transform" preserve="all" />
-    <type fullname="UnityEngine.ExposedReference`1[UnityEngine.Transform]" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.Events.ArgumentCache" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.Events.PersistentCallGroup" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.Events.PersistentListenerMode" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.Events.UnityEvent" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.ExposedReference`1[UnityEngine.Transform]" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.RectOffset" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="UnityEngine.DirectorModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
