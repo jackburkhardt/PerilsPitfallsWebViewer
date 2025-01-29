@@ -77,7 +77,7 @@ function enterGame(){
         });
 
         window.addEventListener("playerEvent", (e) => {
-            //socket.emit("playerEvent", e.detail.data);
+            socket.emit("playerEvent", e.detail.data);
         });
     });
 }
