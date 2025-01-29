@@ -30,7 +30,7 @@
 </head>
 <body style="text-align: center; padding: 0; border: 0; margin: 0;">
 <canvas id="unity-canvas"></canvas>
-<script src="Build/PerilsPitfallsWebViewer.loader.js"></script>
+<script src="PerilsPitfallsWebViewer/PerilsPitfallsWebViewer.loader.js"></script>
 <script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
 <script>
   let UnityGame = null;
@@ -50,13 +50,13 @@
   }
 
   createUnityInstance(document.querySelector("#unity-canvas"), {
-    dataUrl: "Build/PerilsPitfallsWebViewer.data",
-    frameworkUrl: "Build/PerilsPitfallsWebViewer.framework.js",
-    codeUrl: "Build/PerilsPitfallsWebViewer.wasm",
+    dataUrl: "PerilsPitfallsWebViewer/PerilsPitfallsWebViewer.data.br",
+    frameworkUrl: "PerilsPitfallsWebViewer/PerilsPitfallsWebViewer.framework.js.br",
+    codeUrl: "PerilsPitfallsWebViewer/PerilsPitfallsWebViewer.wasm.br",
     streamingAssetsUrl: "StreamingAssets",
     companyName: "SimCase",
     productName: "Perils and Pitfalls",
-    productVersion: "2025.1.28-DEV",
+    productVersion: "2025.1.29-DEV",
     
     autoSyncPersistentDataPath: true,
     matchWebGLToCanvasSize: true, // Uncomment this to separately control WebGL canvas render size and DOM element size.
