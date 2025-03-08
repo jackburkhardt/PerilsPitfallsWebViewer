@@ -8,16 +8,13 @@
     <type fullname="Project.Runtime.Scripts.Manager.GameManager" preserve="all" />
     <type fullname="Project.Runtime.Scripts.SaveSystem.DailyReportSaver" preserve="all" />
     <type fullname="Project.Runtime.Scripts.SaveSystem.GameStateSaver" preserve="all" />
-    <type fullname="Project.Runtime.Scripts.ScriptableObjects.Location" preserve="all" />
     <type fullname="Project.Runtime.Scripts.Utility.DelayLayoutGroup" preserve="all" />
     <type fullname="Settings" preserve="all" />
     <type fullname="SetVerticesDirty" preserve="all" />
-    <type fullname="SmartWatch" preserve="all" />
     <type fullname="TrafficSettings" preserve="all" />
     <type fullname="TriggerResetter" preserve="all" />
     <type fullname="AudioClipDatabase/AudioData" preserve="nothing" serialized="true" />
     <type fullname="AudioClipDatabase/AudioData/AudioDataVariant" preserve="nothing" serialized="true" />
-    <type fullname="SmartWatch/App" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="PixelCrushers.DialogueSystem.ContinueConversationClip" preserve="all" />
@@ -63,7 +60,6 @@
     <type fullname="PixelCrushers.DialogueSystem.DialogueDatabase/SyncInfo" preserve="nothing" serialized="true" />
     <type fullname="PixelCrushers.DialogueSystem.DialogueEntry" preserve="nothing" serialized="true" />
     <type fullname="PixelCrushers.DialogueSystem.EmphasisSetting" preserve="nothing" serialized="true" />
-    <type fullname="PixelCrushers.DialogueSystem.EntryGroup" preserve="nothing" serialized="true" />
     <type fullname="PixelCrushers.DialogueSystem.Field" preserve="nothing" serialized="true" />
     <type fullname="PixelCrushers.DialogueSystem.InputTrigger" preserve="nothing" serialized="true" />
     <type fullname="PixelCrushers.DialogueSystem.Item" preserve="nothing" serialized="true" />
@@ -182,11 +178,11 @@
     <type fullname="UnityEngine.Sprite" preserve="all" />
     <type fullname="UnityEngine.Texture2D" preserve="all" />
     <type fullname="UnityEngine.Transform" preserve="all" />
-    <type fullname="UnityEngine.Events.ArgumentCache" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.Events.PersistentCallGroup" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.Events.PersistentListenerMode" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.Events.UnityEvent" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.ExposedReference`1[UnityEngine.Transform]" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Events.ArgumentCache" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Events.PersistentListenerMode" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.RectOffset" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="UnityEngine.DirectorModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
