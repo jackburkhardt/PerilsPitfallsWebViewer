@@ -72,16 +72,21 @@
   }
 
   createUnityInstance(unityCanvas, {
-    dataUrl: "Build/PerilsPitfallsWebViewer.data",
-    frameworkUrl: "Build/PerilsPitfallsWebViewer.framework.js",
-    codeUrl: "Build/PerilsPitfallsWebViewer.wasm",
+    dataUrl: "Build/PerilsPitfallsWebViewer.data.br",
+    frameworkUrl: "Build/PerilsPitfallsWebViewer.framework.js.br",
+    codeUrl: "Build/PerilsPitfallsWebViewer.wasm.br",
     streamingAssetsUrl: "StreamingAssets",
     companyName: "SimCase",
     productName: "Perils and Pitfalls",
-    productVersion: "26.01.08",
+    productVersion: "26.01.30",
     
     preserveDrawingBuffer: true,
     powerPreference: "0",
+    cacheControl: function (url) {
+      // Caching enabled for .data and .bundle files.
+      // Revalidate if file is up to date before loading from cache
+      return "must-revalidate";
+    },
     
     autoSyncPersistentDataPath: true,
     matchWebGLToCanvasSize: true, // Uncomment this to separately control WebGL canvas render size and DOM element size.
