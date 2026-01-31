@@ -82,6 +82,11 @@
     
     preserveDrawingBuffer: true,
     powerPreference: "0",
+    cacheControl: function (url) {
+      // Caching enabled for .data and .bundle files.
+      // Revalidate if file is up to date before loading from cache
+      return "must-revalidate";
+    },
     
     autoSyncPersistentDataPath: true,
     matchWebGLToCanvasSize: true, // Uncomment this to separately control WebGL canvas render size and DOM element size.
